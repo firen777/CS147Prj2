@@ -53,12 +53,70 @@ assign DATA_R2 = ((READ===1'b1)&&(WRITE===1'b0))?data_ret_2:{`DATA_WIDTH{1'bz} }
 //initial block for initializing content of all 32 registers as 0
 initial
 begin
- for(i=0;i<=`DATA_INDEX_LIMIT;i = i + 1)
-     reg_32x32[i] = { `DATA_WIDTH{1'b0} };
+    for(i=0;i<=`DATA_INDEX_LIMIT;i = i + 1)
+        reg_32x32[i] = { `DATA_WIDTH{1'b0} };
 end
 
 always @ (negedge RST or posedge CLK)
 begin
-
+    if (RST == 1'b0)
+    begin
+        for(i=0;i<=`DATA_INDEX_LIMIT; i = i + 1)
+            reg_32x32[i] = { `DATA_WIDTH{1'b0} };
+    end
+    else
+    begin
+        if ((READ===1'b1)&&(WRITE===1'b0)) // read operation
+        begin
+            data_ret_1 = reg_32x32[ADDR_R1];
+            data_ret_2 = reg_32x32[ADDR_R2];
+        end
+        else if ((READ===1'b0)&&(WRITE===1'b1)) // write operation
+        begin
+            reg_32x32[ADDR_W] = DATA_W;
+        end
+    end
 end
+
+/*
+always @ (negedge RST or posedge CLK)
+begin
+    if (RST == 1'b0)
+    begin
+        for(i=0;i<=`DATA_INDEX_LIMIT; i = i + 1)
+            reg_32x32[i] = { `DATA_WIDTH{1'b0} };
+    end
+    else
+    begin
+        if ((READ===1'b1)&&(WRITE===1'b0)) // read operation
+        begin
+            data_ret_1 = reg_32x32[ADDR_R1];
+            data_ret_2 = reg_32x32[ADDR_R2];
+        end
+        else if ((READ===1'b0)&&(WRITE===1'b1)) // write operation
+        begin
+            reg_32x32[ADDR_W] = DATA_W;
+        end
+    end
+end
+/////////////////////////////////////////////////////////
+always @ (negedge RST)
+begin
+    for(i=0;i<=`DATA_INDEX_LIMIT; i = i + 1)
+        reg_32x32[i] = { `DATA_WIDTH{1'b0} };
+end
+//========================================================//
+always @ (posedge CLK)
+begin
+    if ((READ===1'b1)&&(WRITE===1'b0)) // read operation
+    begin
+        data_ret_1 = reg_32x32[ADDR_R1];
+        data_ret_2 = reg_32x32[ADDR_R2];
+    end
+    else if ((READ===1'b0)&&(WRITE===1'b1)) // write operation
+    begin
+        reg_32x32[ADDR_W] = DATA_W;
+    end
+end
+*/
 endmodule
