@@ -250,13 +250,13 @@ R5
 R6
 n@r@e@g@i@s@t@e@r_@f@i@l@e_32x32
 vREGISTER_FILE_TB
-!s110 1509010025
+!s110 1509010458
 !i10b 1
-!s100 8c]UM^zVC6YT5@kl?]Q;E3
-I^SY@::0X;ZJ[nVHi>fU_:0
+!s100 GIMgGY8ni5M1][8TYAZ@K1
+IC?M2CbgdBjUF>=LBOEn]W0
 R1
 R2
-w1509010012
+w1509010452
 8C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file_tb.v
 FC:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file_tb.v
 R3
@@ -264,7 +264,7 @@ R4
 r1
 !s85 0
 31
-!s108 1509010025.000000
+!s108 1509010458.000000
 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file_tb.v|
 !s101 -O0

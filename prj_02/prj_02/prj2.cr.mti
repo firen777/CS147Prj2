@@ -19,6 +19,13 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 Top level modules:
 	CONTROL_UNIT
 
+} {} {}} C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file_tb.v {1 {vlog -work work -stats=none C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file_tb.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module REGISTER_FILE_TB
+
+Top level modules:
+	REGISTER_FILE_TB
+
 } {} {}} C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/prj_01_tb.v {1 {vlog -work work -stats=none C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/prj_01_tb.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
 -- Compiling module prj_01_tb
