@@ -86,25 +86,20 @@ end
       else 
 	no_of_pass  = no_of_pass + 1;
 
-// test of write and read R1 data:
+// test of write and read data:
 for(i=0;i<32; i = i + 1)
 begin
-#5      READ=1'b1; WRITE=1'b0; ADDR_R1 = i;
+#5      READ=1'b1; WRITE=1'b0; ADDR_R1 = i; ADDR_R2 = i;
 #5      no_of_test = no_of_test + 1;
-        if (DATA_R1 !== i)
-	    $write("[TEST] Read %1b, Write %1b, expecting %8h, got %8h [FAILED]\n", READ, WRITE, i, DATA_R1);
-        else 
-	    no_of_pass  = no_of_pass + 1;
-
-end
-
-// test of write and read R2 data:
-for(i=0;i<32; i = i + 1)
-begin
-#5      READ=1'b1; WRITE=1'b0; ADDR_R2 = i;
-#5      no_of_test = no_of_test + 1;
-        if (DATA_R2 !== i)
-	    $write("[TEST] Read %1b, Write %1b, expecting %8h, got %8h [FAILED]\n", READ, WRITE, i, DATA_R2);
+        if (DATA_R1 !== i || DATA_R2 !== i)
+        begin
+            if (DATA_R1 !== i)
+                $write("[TEST] R1: Read %1b, Write %1b, Addr %d, expecting %8h, got %8h [FAILED]\n", 
+                                                                READ, WRITE, ADDR_R1, i, DATA_R1);
+            if (DATA_R2 !== i)
+                $write("[TEST] R2: Read %1b, Write %1b, Addr %d, expecting %8h, got %8h [FAILED]\n", 
+                                                                READ, WRITE, ADDR_R2, i, DATA_R2);
+        end
         else 
 	    no_of_pass  = no_of_pass + 1;
 

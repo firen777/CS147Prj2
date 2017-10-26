@@ -59,8 +59,6 @@ wire [2:0] proc_state;
 
 PROC_SM state_machine(.STATE(proc_state),.CLK(CLK),.RST(RST)); //instantiate State_Machine
 
-
-
 always @ (proc_state)
 begin
 // TBD: Code for the control unit model
