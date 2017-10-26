@@ -190,7 +190,7 @@ R11
 IFgieFYhHa@1?JjjcSGW=Q2
 R0
 R1
-Z15 w1508207556
+w1508207556
 8C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/processor.v
 FC:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/processor.v
 R14
@@ -228,13 +228,13 @@ R10
 R3
 n@p@r@o@c_@s@m
 vREGISTER_FILE_32x32
-R4
+!s110 1508991639
 !i10b 1
-!s100 ZM^h;^9eY:5DL:ScdCehj2
-IfZ7=g`bk6eiKilgClAU`80
+!s100 n;c6I`N>7L@H^4D3keA[52
+I`o3m=h9eAWOVcf3BXVeL]1
 R0
 R1
-R15
+w1508968497
 8C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file.v
 FC:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file.v
 L0 29
@@ -242,7 +242,7 @@ R2
 r1
 !s85 0
 31
-R6
+!s108 1508991639.000000
 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file.v|
 !s101 -O0
