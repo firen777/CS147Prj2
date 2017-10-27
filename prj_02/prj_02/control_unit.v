@@ -38,7 +38,7 @@ module CONTROL_UNIT(MEM_DATA, RF_DATA_W, RF_ADDR_W, RF_ADDR_R1, RF_ADDR_R2, RF_R
 // Output signals
 // Outputs for register file 
 output [`DATA_INDEX_LIMIT:0] RF_DATA_W;
-output [`ADDRESS_INDEX_LIMIT:0] RF_ADDR_W, RF_ADDR_R1, RF_ADDR_R2;
+output [`REG_ADDR_INDEX_LIMIT:0] RF_ADDR_W, RF_ADDR_R1, RF_ADDR_R2; //[`ADDRESS_INDEX_LIMIT:0], wrong bit-length?
 output RF_READ, RF_WRITE;
 // Outputs for ALU
 output [`DATA_INDEX_LIMIT:0]  ALU_OP1, ALU_OP2;
@@ -46,6 +46,20 @@ output  [`ALU_OPRN_INDEX_LIMIT:0] ALU_OPRN;
 // Outputs for memory
 output [`ADDRESS_INDEX_LIMIT:0]  MEM_ADDR;
 output MEM_READ, MEM_WRITE;
+//---------------------------------
+//Output Registers
+//Outputs for register file
+reg [`DATA_INDEX_LIMIT:0] RF_DATA_W_reg;
+reg [`REG_ADDR_INDEX_LIMIT:0] RF_ADDR_W_reg, RF_ADDR_R1_reg, RF_ADDR_R2_reg;
+reg RF_READ_reg, RF_WRITE_reg;
+//Outputs for ALU
+reg [`DATA_INDEX_LIMIT:0]  ALU_OP1_reg, ALU_OP2_reg;
+reg  [`ALU_OPRN_INDEX_LIMIT:0] ALU_OPRN_reg;
+//Outputs for memory
+reg [`ADDRESS_INDEX_LIMIT:0]  MEM_ADDR_reg;
+reg MEM_READ_reg, MEM_WRITE_reg;
+//=================================
+
 
 // Input signals
 input [`DATA_INDEX_LIMIT:0] RF_DATA_R1, RF_DATA_R2, ALU_RESULT;

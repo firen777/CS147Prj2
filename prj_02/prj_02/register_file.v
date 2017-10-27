@@ -38,7 +38,7 @@ input [`REG_ADDR_INDEX_LIMIT:0] ADDR_R1, ADDR_R2, ADDR_W;
 output [`DATA_INDEX_LIMIT:0] DATA_R1;
 output [`DATA_INDEX_LIMIT:0] DATA_R2;
 
-//+++++++++++++++++++++++++ see memory.v +++++++++++++++++++++++++\\
+//see memory.v
 reg [`DATA_INDEX_LIMIT:0] reg_32x32 [0:`REG_INDEX_LIMIT]; // register storage
 integer i; // index for reset operation
 
