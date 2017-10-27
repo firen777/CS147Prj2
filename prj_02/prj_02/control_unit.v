@@ -112,7 +112,7 @@ begin
   begin
     MEM_ADDR_reg = PC_REG;
     MEM_READ_reg = 1'b1; MEM_WRITE_reg = 1'b0;
-    RF_READ_reg = 1'b0; RF_WRITE_reg 1'b0;
+    RF_READ_reg = 1'b0; RF_WRITE_reg = 1'b0;
   end
   //Decoding INST_REG
   else if (proc_state === `PROC_DECODE)
@@ -135,7 +135,7 @@ begin
     JMP_ADDR = {6'b000000, address};
   end
 end
-endmodule;
+endmodule
 
 //------------------------------------------------------------------------------------------
 // Module: CONTROL_UNIT
