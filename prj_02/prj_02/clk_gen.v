@@ -4,7 +4,7 @@
 // Output: CLK - output clock with period `SYS_CLK_FREQ
 //
 // Notes: Clock generator. The clock frequency is defined in the project definition file.
-// 
+//
 //
 // Revision History:
 //
@@ -29,4 +29,4 @@ always
 begin
 #`SYS_CLK_HALF_PERIOD CLK <= ~CLK;
 end
-endmodule;
+endmodule
