@@ -12,7 +12,7 @@
 //         MEM_ADDR   : Memory address to be read in
 //         MEM_READ   : Memory read signal
 //         MEM_WRITE  : Memory write signal
-//         
+//
 // Input:  RF_DATA_R1 : Data at ADDR_R1 address
 //         RF_DATA_R2 : Data at ADDR_R1 address
 //         ALU_RESULT    : ALU output data
@@ -33,10 +33,10 @@
 `include "prj_definition.v"
 module CONTROL_UNIT(MEM_DATA, RF_DATA_W, RF_ADDR_W, RF_ADDR_R1, RF_ADDR_R2, RF_READ, RF_WRITE,
                     ALU_OP1, ALU_OP2, ALU_OPRN, MEM_ADDR, MEM_READ, MEM_WRITE,
-                    RF_DATA_R1, RF_DATA_R2, ALU_RESULT, ZERO, CLK, RST); 
+                    RF_DATA_R1, RF_DATA_R2, ALU_RESULT, ZERO, CLK, RST);
 
 // Output signals
-// Outputs for register file 
+// Outputs for register file
 output [`DATA_INDEX_LIMIT:0] RF_DATA_W;
 output [`REG_ADDR_INDEX_LIMIT:0] RF_ADDR_W, RF_ADDR_R1, RF_ADDR_R2; //[`ADDRESS_INDEX_LIMIT:0], wrong bit-length?
 output RF_READ, RF_WRITE;
@@ -46,20 +46,6 @@ output  [`ALU_OPRN_INDEX_LIMIT:0] ALU_OPRN;
 // Outputs for memory
 output [`ADDRESS_INDEX_LIMIT:0]  MEM_ADDR;
 output MEM_READ, MEM_WRITE;
-//---------------------------------
-//Output Registers
-//Outputs for register file
-reg [`DATA_INDEX_LIMIT:0] RF_DATA_W_reg;
-reg [`REG_ADDR_INDEX_LIMIT:0] RF_ADDR_W_reg, RF_ADDR_R1_reg, RF_ADDR_R2_reg;
-reg RF_READ_reg, RF_WRITE_reg;
-//Outputs for ALU
-reg [`DATA_INDEX_LIMIT:0]  ALU_OP1_reg, ALU_OP2_reg;
-reg  [`ALU_OPRN_INDEX_LIMIT:0] ALU_OPRN_reg;
-//Outputs for memory
-reg [`ADDRESS_INDEX_LIMIT:0]  MEM_ADDR_reg;
-reg MEM_READ_reg, MEM_WRITE_reg;
-//=================================
-
 
 // Input signals
 input [`DATA_INDEX_LIMIT:0] RF_DATA_R1, RF_DATA_R2, ALU_RESULT;
@@ -73,24 +59,75 @@ wire [2:0] proc_state;
 
 PROC_SM state_machine(.STATE(proc_state),.CLK(CLK),.RST(RST)); //instantiate State_Machine
 
+//========Registers=============
+//Output Registers
+//Outputs for register file
+reg [`DATA_INDEX_LIMIT:0] RF_DATA_W_reg;
+reg [`REG_ADDR_INDEX_LIMIT:0] RF_ADDR_W_reg, RF_ADDR_R1_reg, RF_ADDR_R2_reg;
+reg RF_READ_reg, RF_WRITE_reg;
+//Outputs for ALU
+reg [`DATA_INDEX_LIMIT:0]  ALU_OP1_reg, ALU_OP2_reg;
+reg  [`ALU_OPRN_INDEX_LIMIT:0] ALU_OPRN_reg;
+//Outputs for memory
+reg [`ADDRESS_INDEX_LIMIT:0]  MEM_ADDR_reg;
+reg MEM_READ_reg, MEM_WRITE_reg;
+//Register for writing out data. Assign to Inout MEM_DATA when WRITE
+reg [`DATA_INDEX_LIMIT:0] MEM_DATA_reg;
+//========Outputs assignments======
+//Outputs for register file
+assign RF_DATA_W = RF_DATA_W_reg;
+assign RF_ADDR_W = RF_ADDR_W_reg; assign RF_ADDR_R1 = RF_ADDR_R1_reg; assign RF_ADDR_R2 = RF_ADDR_R2_reg;
+assign RF_READ = RF_READ_reg; assign RF_WRITE = RF_WRITE_reg;
+//Outputs for ALU
+assign ALU_OP1 = ALU_OP1_reg; assign ALU_OP2 = ALU_OP2_reg;
+assign ALU_OPRN = ALU_OPRN_reg;
+//Outputs for memory
+assign MEM_ADDR = MEM_ADDR_reg;
+assign MEM_READ = MEM_READ_reg; assign MEM_WRITE = MEM_WRITE_reg;
+//Register for writing out data. Assign to Inout MEM_DATA when WRITE
+assign MEM_DATA = ((MEM_READ===1'b0)&&(MEM_WRITE===1'b1))?MEM_DATA_reg:{`DATA_WIDTH{1'bz} };
+//==================================
+//Internal Register
+reg [`ADDRESS_INDEX_LIMIT:0] PC_REG;
+reg [`DATA_INDEX_LIMIT:0] INST_REG;
+reg [`ADDRESS_INDEX_LIMIT:0] SP_REG;
+reg [5:0] opcode;
+reg [4:0] rs;
+reg [4:0] rt;
+reg [4:0] rd;
+reg [4:0] shamt;
+reg [5:0] funct;
+reg [15:0] immediate;
+reg [25:0] address;
 
 
 always @ (proc_state)
 begin
-// TBD: Code for the control unit model
+  //Addr<=PC; R<=1; W<=0; RegRW<=00||11
+  if (proc_state === `PROC_FETCH)
+  begin
+    MEM_ADDR_reg = PC_REG;
+    MEM_READ_reg = 1'b1; MEM_WRITE_reg = 1'b0;
+    RF_READ_reg = 1'b0; RF_WRITE_reg 1'b0;
+  end
+  //
+  else if (proc_state === `PROC_DECODE)
+  begin
+    INST_REG = MEM_DATA;
+  end
 end
 endmodule;
 
 //------------------------------------------------------------------------------------------
 // Module: CONTROL_UNIT
 // Output: STATE      : State of the processor
-//         
+//
 // Input:  CLK        : Clock signal
 //         RST        : Reset signal
 //
 // INOUT: MEM_DATA    : Data to be read in from or write to the memory
 //
-// Notes: - Processor continuously cycle witnin fetch, decode, execute, 
+// Notes: - Processor continuously cycle witnin fetch, decode, execute,
 //          memory, write back state. State values are in the prj_definition.v
 //
 // Revision History:
