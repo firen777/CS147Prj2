@@ -99,6 +99,10 @@ reg [4:0] shamt;
 reg [5:0] funct;
 reg [15:0] immediate;
 reg [25:0] address;
+reg [`DATA_INDEX_LIMIT:0] SIGN_EXT;
+reg [`DATA_INDEX_LIMIT:0] ZERO_EXT;
+reg [`DATA_INDEX_LIMIT:0] LUI;
+reg [`DATA_INDEX_LIMIT:0] JMP_ADDR;
 
 
 always @ (proc_state)
@@ -110,10 +114,25 @@ begin
     MEM_READ_reg = 1'b1; MEM_WRITE_reg = 1'b0;
     RF_READ_reg = 1'b0; RF_WRITE_reg 1'b0;
   end
-  //
+  //Decoding INST_REG
   else if (proc_state === `PROC_DECODE)
   begin
     INST_REG = MEM_DATA;
+    //Parse Instruction
+    //R-Type
+    {opcode, rs, rt, rd, shamt, funct} = INST_REG;
+    //I-Type
+    {opcode, rs, rt, immediate} = INST_REG;
+    //J-Type
+    {opcode, address} = INST_REG;
+    //Sign extension
+    SIGN_EXT = {{16{immediate[15]}},immediate};
+    //Zero extension
+    ZERO_EXT = {16'h0000, immediate};
+    //LUI: {16-bit , 16x0}
+    LUI = {immediate, 16'h0000};
+    //Jump address: {6x0, 26-bit}
+    JMP_ADDR = {6'b000000, address};
   end
 end
 endmodule;
@@ -180,4 +199,66 @@ begin
   endcase
 end
 
-endmodule;
+//===========================================================================
+//print_instruction task
+//usage: print_instruction(INST_REG);
+//===========================================================================
+task print_instruction;
+input [`DATA_INDEX_LIMIT:0] inst;
+
+reg [5:0] op_task;
+reg [4:0] rs_task;
+reg [4:0] rt_task;
+reg [4:0] rd_task;
+reg [4:0] shamt_task;
+reg [5:0] funct_task;
+reg [15:0] imm_task;
+reg [25:0] addr_task;
+
+begin
+  // parse the instruction
+  // R-type
+  {op_task, rs_task, rt_task, rd_task, shamt_task, funct_task} = inst;
+  // I-type
+  {op_task, rs_task, rt_task, imm_task } = inst;
+  // J-type
+  {op_task, addr_task} = inst;
+  $write("@ %6dns -> [0X%08h] ", $time, inst);
+  case(op_task)
+    // R-Type
+    6'h00 : begin
+      case(funct_task)
+        6'h20: $write("add  r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
+        6'h22: $write("sub  r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
+        6'h2c: $write("mul  r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
+        6'h24: $write("and  r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
+        6'h25: $write("or   r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
+        6'h27: $write("nor  r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
+        6'h2a: $write("slt  r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
+        6'h01: $write("sll  r[%02d], %2d, r[%02d];", rs_task, shamt_task, rd_task);
+        6'h02: $write("srl  r[%02d], 0X%02h, r[%02d];", rs_task, shamt_task, rd_task);
+        6'h08: $write("jr   r[%02d];", rs_task);
+        default: $write("");
+      endcase
+    end
+    6'h08 : $write("addi  r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
+    6'h1d : $write("muli  r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
+    6'h0c : $write("andi  r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
+    6'h0d : $write("ori   r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
+    6'h0f : $write("lui   r[%02d], 0X%04h;", rt_task, imm_task);
+    6'h0a : $write("slti  r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
+    6'h04 : $write("beq r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
+    6'h05 : $write("bne r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
+    6'h23 : $write("lw r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
+    6'h2b : $write("sw r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
+    6'h02 : $write("jmp 0X%07h;", addr_task);
+    6'h03 : $write("jal 0X%07h;", addr_task);
+    6'h1b : $write("push;");
+    6'h1c : $write("pop;");
+    default: $write("");
+  endcase
+  $write("\n");
+end
+endtask
+
+endmodule
