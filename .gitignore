@@ -1,2 +1,6 @@
+# Icarus Verilog:
+*.vvp
+*.vcd
+# MISC:
 *.pdf
 *.zip
