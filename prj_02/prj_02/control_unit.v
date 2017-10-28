@@ -241,7 +241,7 @@ begin
   //Write Back Phase
   else if (proc_state === `PROC_WB)
   begin
-  PC_REG = PC_REG + 1
+  PC_REG = PC_REG + 1;
   MEM_READ_reg = 1'b0; MEM_WRITE_reg = 1'b0;
   case (opcode)
     // R-Type

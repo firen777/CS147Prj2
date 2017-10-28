@@ -40,4 +40,4 @@ PROC_CS147_SEC05 processor_inst(.DATA(DATA),   .ADDR(ADDR), .READ(READ),
 defparam memory_inst.mem_init_file = mem_init_file;
 MEMORY_64MB memory_inst(.DATA(DATA), .READ(READ), .WRITE(WRITE), 
                          .ADDR(ADDR), .CLK(CLK),   .RST(RST));
-endmodule
+endmodule;

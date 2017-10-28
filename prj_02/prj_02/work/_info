@@ -9,7 +9,7 @@ z2
 cModel Technology
 dC:/Users/Albert/Desktop/SJSUs3/CS147/set1/testrun
 vALU
-Z0 !s110 1509009559
+Z0 !s110 1509177927
 !i10b 1
 !s100 [?<PSM`>blGm=GRZG?7K`2
 I;PA;jPH@oV?kGFA[^eM=j0
@@ -23,7 +23,7 @@ Z4 OP;L;10.4a;61
 r1
 !s85 0
 31
-Z5 !s108 1509009559.000000
+Z5 !s108 1509177927.000000
 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/alu.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/alu.v|
 !s101 -O0
@@ -31,7 +31,7 @@ Z5 !s108 1509009559.000000
 Z6 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
 n@a@l@u
 vCLK_GENERATOR
-!s110 1509141214
+Z7 !s110 1509177928
 !i10b 1
 !s100 I`I=T4aaeE09lSRDFRN971
 Ij[4[C2bIQ63:<2Xia^KJF2
@@ -45,7 +45,7 @@ R4
 r1
 !s85 0
 31
-!s108 1509141214.000000
+Z8 !s108 1509177928.000000
 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/clk_gen.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/clk_gen.v|
 !s101 -O0
@@ -53,21 +53,21 @@ r1
 R6
 n@c@l@k_@g@e@n@e@r@a@t@o@r
 vCONTROL_UNIT
-Z7 !s110 1509161375
+R7
 !i10b 1
-!s100 Wd0RE<C2mfF<7FQL^6mza3
-I[;?R>6do0;;XZlN4bRTA>3
+!s100 a`S[DDCdGL3GB;OQg:;kH1
+I2jX=1o[8oUid9Z8SoK:oQ2
 R1
 R2
-Z8 w1509161330
-Z9 8C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v
-Z10 FC:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v
+Z9 w1509177684
+Z10 8C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v
+Z11 FC:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v
 L0 34
 R4
 r1
 !s85 0
 31
-Z11 !s108 1509161375.000000
+R8
 Z12 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v|
 Z13 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v|
 !s101 -O0
@@ -75,21 +75,21 @@ Z13 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSU
 R6
 n@c@o@n@t@r@o@l_@u@n@i@t
 vDA_VINCI
-R0
+R7
 !i10b 1
 !s100 @Cfmb0Z_T`MjRPoLI@k6C0
 IMdce>:Y@5>3TzT<RT]aOX0
 R1
 R2
-Z14 w1508207555
+w1509177878
 8C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/da_vinci.v
 FC:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/da_vinci.v
-Z15 L0 24
+Z14 L0 24
 R4
 r1
 !s85 0
 31
-R5
+R8
 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/da_vinci.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/da_vinci.v|
 !s101 -O0
@@ -97,21 +97,21 @@ R5
 R6
 n@d@a_@v@i@n@c@i
 vDA_VINCI_TB
-R0
+!s110 1509178285
 !i10b 1
-!s100 G5[1X>CkblCg3Q37jzTgI0
-Ie2DVCLm0>jINmRb29N>VP1
+!s100 k2L14[^A1[1NOgbGWFgD?2
+IU=eG6klgkO?Q;RCOYk]Nz1
 R1
 R2
-R14
+w1509178279
 8C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/da_vinci_tb.v
 FC:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/da_vinci_tb.v
-R15
+R14
 R4
 r1
 !s85 0
 31
-R5
+!s108 1509178285.000000
 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/da_vinci_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/da_vinci_tb.v|
 !s101 -O0
@@ -119,21 +119,21 @@ R5
 R6
 n@d@a_@v@i@n@c@i_@t@b
 vMEM_64MB_TB
-R0
+R7
 !i10b 1
 !s100 Q0bd^kgMCaH`JYm[fkQkH3
 I6mK8DTAFB@62@Q@YSo^4K0
 R1
 R2
-R14
+w1509177902
 8C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/mem_64MB_tb.v
 FC:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/mem_64MB_tb.v
-Z16 L0 23
+Z15 L0 23
 R4
 r1
 !s85 0
 31
-R5
+R8
 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/mem_64MB_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/mem_64MB_tb.v|
 !s101 -O0
@@ -141,13 +141,13 @@ R5
 R6
 n@m@e@m_64@m@b_@t@b
 vMEMORY_64MB
-Z17 !s110 1509009560
+R7
 !i10b 1
 !s100 :1AFzeFFc3mJn0MoaYcm`3
 I6lOf=laAjIhQc]3cO15Z^0
 R1
 R2
-R14
+w1508207555
 8C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/memory.v
 FC:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/memory.v
 L0 26
@@ -155,7 +155,7 @@ R4
 r1
 !s85 0
 31
-Z18 !s108 1509009560.000000
+R8
 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/memory.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/memory.v|
 !s101 -O0
@@ -163,7 +163,7 @@ Z18 !s108 1509009560.000000
 R6
 n@m@e@m@o@r@y_64@m@b
 vprj_01_tb
-R17
+R7
 !i10b 1
 !s100 W9@5kJlTa>Qh`Q_<kj[m43
 I:<WBlRNdaK8eC0zmHDBJ=1
@@ -177,28 +177,28 @@ R4
 r1
 !s85 0
 31
-R18
+R8
 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/prj_01_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/prj_01_tb.v|
 !s101 -O0
 !i113 1
 R6
 vPROC_CS147_SEC05
-R17
+R7
 !i10b 1
 !s100 hoddXg151;J@]_cW[Il_Y0
 IFgieFYhHa@1?JjjcSGW=Q2
 R1
 R2
-w1508207556
+w1509177914
 8C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/processor.v
 FC:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/processor.v
-R16
+R15
 R4
 r1
 !s85 0
 31
-R18
+R8
 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/processor.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/processor.v|
 !s101 -O0
@@ -208,19 +208,19 @@ n@p@r@o@c_@c@s147_@s@e@c05
 vPROC_SM
 R7
 !i10b 1
-!s100 hKFmUR>h68lH@nLQJOb6?3
-IfeYz`_Mf;34[CEY`8;egc0
+!s100 L`GTKYlOVl7zDh8mAN<YN3
+I:;ZRHE1cz3>lSR2@=9LzJ0
 R1
 R2
-R8
 R9
 R10
-L0 234
+R11
+L0 328
 R4
 r1
 !s85 0
 31
-R11
+R8
 R12
 R13
 !s101 -O0
@@ -228,7 +228,7 @@ R13
 R6
 n@p@r@o@c_@s@m
 vREGISTER_FILE_32x32
-!s110 1509057161
+R0
 !i10b 1
 !s100 R`@MN=ADojnXFfFA>6Q9D3
 ICHWRzVCGJlGlV?a`3ZYX_3
@@ -242,7 +242,7 @@ R4
 r1
 !s85 0
 31
-!s108 1509057161.000000
+R5
 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file.v|
 !s101 -O0
@@ -250,7 +250,7 @@ r1
 R6
 n@r@e@g@i@s@t@e@r_@f@i@l@e_32x32
 vREGISTER_FILE_TB
-!s110 1509048118
+R7
 !i10b 1
 !s100 AbFZ[RZKAGhjM29VKPCI40
 IOI@_ER_M=Me0^Xdh8URQL1
@@ -264,7 +264,7 @@ R4
 r1
 !s85 0
 31
-!s108 1509048117.000000
+R8
 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/register_file_tb.v|
 !s101 -O0
