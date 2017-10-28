@@ -133,7 +133,77 @@ begin
     LUI = {immediate, 16'h0000};
     //Jump address: {6x0, 26-bit}
     JMP_ADDR = {6'b000000, address};
+    //set RF read address
+    RF_ADDR_R1_reg = rs;
+    RF_ADDR_R2_reg = rt;
+    //set operations to read
+    RF_READ_reg = 1'b1; RF_WRITE_reg = 1'b0;
   end
+  //Execution phase
+  else if (proc_state === `PROC_EXE)
+  begin
+    case (opcode)
+      // R-Type //ALU: 1,2,3, 6,7,8,9, 5,4, x
+      6'h00 : begin
+        case(funct)
+          6'h20: begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h01; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = RF_DATA_R2;
+          end
+          6'h22: begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h02; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = RF_DATA_R2;
+          end
+          6'h2c: begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h03; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = RF_DATA_R2;
+          end
+          6'h24: begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h06; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = RF_DATA_R2;
+          end
+          6'h25: begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h07; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = RF_DATA_R2;
+          end
+          6'h27: begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h08; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = RF_DATA_R2;
+          end
+          6'h2a: begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h09; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = RF_DATA_R2;
+          end
+          6'h01: begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h05; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = shamt;
+          end
+          6'h02: begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h04; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = shamt;
+          end
+          6'h08: begin PC_REG = RF_DATA_R1;
+          end
+          default: $write("R-funct ERR!");
+        endcase
+      end
+
+      // I-Type //ALU: 1,3, 6,7,x,9, x,x,1,1
+      6'h08 : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h01; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = SIGN_EXT;
+      end
+      6'h1d : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h03; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = SIGN_EXT;
+      end
+      6'h0c : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h06; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = ZERO_EXT;
+      end
+      6'h0d : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h07; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = ZERO_EXT;
+      end
+      // 6'h0f : begin
+      // end
+      6'h0a : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h09; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = SIGN_EXT;
+      end
+      // 6'h04 : begin
+      // end
+      // 6'h05 : begin
+      // end
+      6'h23 : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h01; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = SIGN_EXT;
+      end
+      6'h2b : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h01; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = SIGN_EXT;
+      end
+
+      // J-Type
+      6'h02 : begin
+      end
+      6'h03 : begin
+      end
+      6'h1b : begin
+      end
+      6'h1c : begin
+      end
+
+    endcase
+  else
 end
 endmodule
 
@@ -228,34 +298,34 @@ begin
     // R-Type
     6'h00 : begin
       case(funct_task)
-        6'h20: $write("add  r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
-        6'h22: $write("sub  r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
-        6'h2c: $write("mul  r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
-        6'h24: $write("and  r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
-        6'h25: $write("or   r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
-        6'h27: $write("nor  r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
-        6'h2a: $write("slt  r[%02d], r[%02d], r[%02d];", rs_task, rt_task, rd_task);
-        6'h01: $write("sll  r[%02d], %2d, r[%02d];", rs_task, shamt_task, rd_task);
-        6'h02: $write("srl  r[%02d], 0X%02h, r[%02d];", rs_task, shamt_task, rd_task);
+        6'h20: $write("add  r[%02d], r[%02d], r[%02d];", rd_task, rs_task, rt_task);
+        6'h22: $write("sub  r[%02d], r[%02d], r[%02d];", rd_task, rs_task, rt_task);
+        6'h2c: $write("mul  r[%02d], r[%02d], r[%02d];", rd_task, rs_task, rt_task);
+        6'h24: $write("and  r[%02d], r[%02d], r[%02d];", rd_task, rs_task, rt_task);
+        6'h25: $write("or   r[%02d], r[%02d], r[%02d];", rd_task, rs_task, rt_task);
+        6'h27: $write("nor  r[%02d], r[%02d], r[%02d];", rd_task, rs_task, rt_task);
+        6'h2a: $write("slt  r[%02d], r[%02d], r[%02d];", rd_task, rs_task, rt_task);
+        6'h01: $write("sll  r[%02d], %2d, r[%02d];", rd_task, rs_task, shamt_task);
+        6'h02: $write("srl  r[%02d], %2d, r[%02d];", rd_task, rs_task, shamt_task);
         6'h08: $write("jr   r[%02d];", rs_task);
-        default: $write("");
+        default: $write("R-funct ERR!");
       endcase
     end
-    6'h08 : $write("addi  r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
-    6'h1d : $write("muli  r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
-    6'h0c : $write("andi  r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
-    6'h0d : $write("ori   r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
+    6'h08 : $write("addi  r[%02d], r[%02d], 0X%04h;", rt_task, rs_task, imm_task);
+    6'h1d : $write("muli  r[%02d], r[%02d], 0X%04h;", rt_task, rs_task, imm_task);
+    6'h0c : $write("andi  r[%02d], r[%02d], 0X%04h;", rt_task, rs_task, imm_task);
+    6'h0d : $write("ori   r[%02d], r[%02d], 0X%04h;", rt_task, rs_task, imm_task);
     6'h0f : $write("lui   r[%02d], 0X%04h;", rt_task, imm_task);
-    6'h0a : $write("slti  r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
-    6'h04 : $write("beq r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
-    6'h05 : $write("bne r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
-    6'h23 : $write("lw r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
-    6'h2b : $write("sw r[%02d], r[%02d], 0X%04h;", rs_task, rt_task, imm_task);
+    6'h0a : $write("slti  r[%02d], r[%02d], 0X%04h;", rt_task, rs_task, imm_task);
+    6'h04 : $write("beq r[%02d], r[%02d], 0X%04h;", rt_task, rs_task, imm_task);
+    6'h05 : $write("bne r[%02d], r[%02d], 0X%04h;", rt_task, rs_task, imm_task);
+    6'h23 : $write("lw r[%02d], r[%02d], 0X%04h;", rt_task, rs_task, imm_task);
+    6'h2b : $write("sw r[%02d], r[%02d], 0X%04h;", rt_task, rs_task, imm_task);
     6'h02 : $write("jmp 0X%07h;", addr_task);
     6'h03 : $write("jal 0X%07h;", addr_task);
     6'h1b : $write("push;");
     6'h1c : $write("pop;");
-    default: $write("");
+    default: $write("opcode ERR!");
   endcase
   $write("\n");
 end
