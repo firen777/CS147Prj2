@@ -203,7 +203,13 @@ begin
       end
 
     endcase
-  else
+  end
+  else if (proc_state === `PROC_MEM)
+  begin
+  end
+  else if (proc_state === `PROC_WB)
+  begin
+  end
 end
 endmodule
 

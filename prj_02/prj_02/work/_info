@@ -53,13 +53,13 @@ r1
 R6
 n@c@l@k_@g@e@n@e@r@a@t@o@r
 vCONTROL_UNIT
-Z7 !s110 1509141241
+Z7 !s110 1509161375
 !i10b 1
-!s100 ISf[l=GQaKXBQE]hPCgo12
-ITT4G<MfmHN6FNZ5Dg`4X>0
+!s100 Wd0RE<C2mfF<7FQL^6mza3
+I[;?R>6do0;;XZlN4bRTA>3
 R1
 R2
-Z8 w1509141237
+Z8 w1509161330
 Z9 8C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v
 Z10 FC:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v
 L0 34
@@ -67,7 +67,7 @@ R4
 r1
 !s85 0
 31
-Z11 !s108 1509141240.000000
+Z11 !s108 1509161375.000000
 Z12 !s107 prj_definition.v|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v|
 Z13 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v|
 !s101 -O0
@@ -208,14 +208,14 @@ n@p@r@o@c_@c@s147_@s@e@c05
 vPROC_SM
 R7
 !i10b 1
-!s100 UfS=OjEXBj6eP0Z2DRoFC0
-IjB5Mj=1VUzcKlRNUGlc951
+!s100 hKFmUR>h68lH@nLQJOb6?3
+IfeYz`_Mf;34[CEY`8;egc0
 R1
 R2
 R8
 R9
 R10
-L0 158
+L0 234
 R4
 r1
 !s85 0
