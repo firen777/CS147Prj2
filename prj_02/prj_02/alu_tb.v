@@ -28,7 +28,7 @@
 //module ALU(OUT, ZERO, OP1, OP2, OPRN)
 
 `include "prj_definition.v"
-module prj_01_tb;
+module ALU_TB;
 
 integer total_test;
 integer pass_test;
@@ -148,6 +148,13 @@ pass_test = 0;
     oprn_reg=`ALU_OPRN_WIDTH'h08; // ^|
 #5  test_and_count(total_test, pass_test, 
                    test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
+
+#5  op1_reg=-1;  //1111...1111
+    op2_reg=0;  
+    oprn_reg=`ALU_OPRN_WIDTH'h08; // ^|
+#5  test_and_count(total_test, pass_test, 
+                   test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
+
 #5  op1_reg=11;
     op2_reg=15;
     oprn_reg=`ALU_OPRN_WIDTH'h09;

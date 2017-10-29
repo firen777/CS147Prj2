@@ -5,6 +5,13 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 Top level modules:
 	DA_VINCI
 
+} {} {}} C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/alu_tb.v {1 {vlog -work work -stats=none C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/alu_tb.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ALU_TB
+
+Top level modules:
+	ALU_TB
+
 } {} {}} C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v {1 {vlog -work work -stats=none C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
 -- Compiling module CONTROL_UNIT
@@ -20,19 +27,19 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 Top level modules:
 	REGISTER_FILE_TB
 
-} {} {}} C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/prj_01_tb.v {1 {vlog -work work -stats=none C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/prj_01_tb.v
-Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
--- Compiling module prj_01_tb
-
-Top level modules:
-	prj_01_tb
-
 } {} {}} C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/memory.v {1 {vlog -work work -stats=none C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/memory.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
 -- Compiling module MEMORY_64MB
 
 Top level modules:
 	MEMORY_64MB
+
+} {} {}} C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/da_vinci_tb.v {1 {vlog -work work -stats=none C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/da_vinci_tb.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module DA_VINCI_TB
+
+Top level modules:
+	DA_VINCI_TB
 
 } {} {}} C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/alu.v {1 {vlog -work work -stats=none C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/alu.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015

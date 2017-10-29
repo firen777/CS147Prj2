@@ -66,68 +66,95 @@ pass_test = 0;
     oprn_reg=`ALU_OPRN_WIDTH'h02;   
 #5  test_and_count(total_test, pass_test, 
                    test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
-
-// 15 + -5
-#5  op1_reg=15;
+// 5 + -5
+#5  op1_reg=5;
     op2_reg=-5;
     oprn_reg=`ALU_OPRN_WIDTH'h01;
 #5  test_and_count(total_test, pass_test, 
                    test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
 
-#5  op1_reg=7;
+// 5 - 5
+#5  op1_reg=5;
     op2_reg=5;
-    oprn_reg=`ALU_OPRN_WIDTH'h03;
+    oprn_reg=`ALU_OPRN_WIDTH'h02;
 #5  test_and_count(total_test, pass_test, 
                    test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
-#5  op1_reg=-7;
+
+#5  op1_reg=7;
     op2_reg=5;
-    oprn_reg=`ALU_OPRN_WIDTH'h03;
+    oprn_reg=`ALU_OPRN_WIDTH'h03; //*
+#5  test_and_count(total_test, pass_test, 
+                   test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
+#5  op1_reg=0;
+    op2_reg=5;
+    oprn_reg=`ALU_OPRN_WIDTH'h03; //*
 #5  test_and_count(total_test, pass_test, 
                    test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
 
 #5  op1_reg=-7;
     op2_reg=-5;
-    oprn_reg=`ALU_OPRN_WIDTH'h03;
+    oprn_reg=`ALU_OPRN_WIDTH'h03; //*
 #5  test_and_count(total_test, pass_test, 
                    test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
 
-#5  op1_reg=8'b00001111;
+#5  op1_reg=31; // 0001 1111
     op2_reg=2;
-    oprn_reg=`ALU_OPRN_WIDTH'h04;
+    oprn_reg=`ALU_OPRN_WIDTH'h04; //>>
 #5  test_and_count(total_test, pass_test, 
                    test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
-#5  op1_reg=-1;
-    op2_reg=2;
-    oprn_reg=`ALU_OPRN_WIDTH'h04;
-#5  test_and_count(total_test, pass_test, 
-                   test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
-
 #5  op1_reg=1;
-    op2_reg=5;
-    oprn_reg=`ALU_OPRN_WIDTH'h05;
-#5  test_and_count(total_test, pass_test, 
-                   test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
-#5  op1_reg=-1;
-    op2_reg=5;
-    oprn_reg=`ALU_OPRN_WIDTH'h05;
+    op2_reg=2;
+    oprn_reg=`ALU_OPRN_WIDTH'h04; //>>
 #5  test_and_count(total_test, pass_test, 
                    test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
 
-#5  op1_reg=4'b1011;
-    op2_reg=4'b0010;
-    oprn_reg=`ALU_OPRN_WIDTH'h06;
+#5  op1_reg=1; // 0000 0001
+    op2_reg=5;
+    oprn_reg=`ALU_OPRN_WIDTH'h05; // <<
 #5  test_and_count(total_test, pass_test, 
                    test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
-#5  op1_reg=4'b1011;
-    op2_reg=4'b0010;
-    oprn_reg=`ALU_OPRN_WIDTH'h07;
+#5  op1_reg=0;
+    op2_reg=5;
+    oprn_reg=`ALU_OPRN_WIDTH'h05; // <<
 #5  test_and_count(total_test, pass_test, 
                    test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
-#5  op1_reg=-8;
-    op2_reg=4'b0010;
-    oprn_reg=`ALU_OPRN_WIDTH'h08;
+
+#5  op1_reg=11; //1011
+    op2_reg=2;  //0010
+    oprn_reg=`ALU_OPRN_WIDTH'h06; //&
 #5  test_and_count(total_test, pass_test, 
                    test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
+
+#5  op1_reg=11; //1011
+    op2_reg=4;  //0100
+    oprn_reg=`ALU_OPRN_WIDTH'h06; //&
+#5  test_and_count(total_test, pass_test, 
+                   test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
+
+#5  op1_reg=11; //1011
+    op2_reg=2;  //0010
+    oprn_reg=`ALU_OPRN_WIDTH'h07; //|
+#5  test_and_count(total_test, pass_test, 
+                   test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
+
+#5  op1_reg=0;
+    op2_reg=0;
+    oprn_reg=`ALU_OPRN_WIDTH'h07; //|
+#5  test_and_count(total_test, pass_test, 
+                   test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
+
+#5  op1_reg=-8;  //1111...1000
+    op2_reg=2;   //0000...0010
+    oprn_reg=`ALU_OPRN_WIDTH'h08; // ^|
+#5  test_and_count(total_test, pass_test, 
+                   test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
+
+#5  op1_reg=-1;  //1111...1111
+    op2_reg=0;  
+    oprn_reg=`ALU_OPRN_WIDTH'h08; // ^|
+#5  test_and_count(total_test, pass_test, 
+                   test_golden(op1_reg,op2_reg,oprn_reg,r_net,z_net));
+
 #5  op1_reg=11;
     op2_reg=15;
     oprn_reg=`ALU_OPRN_WIDTH'h09;
