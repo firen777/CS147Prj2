@@ -190,12 +190,10 @@ begin
       end
       6'h04, 6'h05 : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h02; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = RF_DATA_R2;
       end
-      // 6'h05 : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h02; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = RF_DATA_R2;
-      // end
+      // 6'h05 ...
       6'h23, 6'h2b : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h01; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = SIGN_EXT;
       end
-      // 6'h2b : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h01; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = SIGN_EXT;
-      // end
+      // 6'h2b ...
 
       // J-Type
       // 6'h02 : begin
@@ -246,13 +244,14 @@ begin
   case (opcode)
     // R-Type
     6'h00 : begin
-      if (funct === 6'h08)
-        PC_REG = RF_DATA_R1;
-      else
+      case (funct)
+        6'h08: PC_REG = RF_DATA_R1;
+        6'h02, 6'h01, 6'h2a, 6'h27, 6'h25, 6'h24, 6'h2c, 6'h22, 6'h20:
         begin
           RF_READ_reg = 1'b0; RF_WRITE_reg = 1'b1;
           RF_ADDR_W_reg = rd; RF_DATA_W_reg = ALU_RESULT;
         end
+      endcase
     end
 
     // I-Type
@@ -260,18 +259,12 @@ begin
       RF_READ_reg = 1'b0; RF_WRITE_reg = 1'b1;
       RF_ADDR_W_reg = rt; RF_DATA_W_reg = ALU_RESULT;
     end
-    // 6'h1d : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h03; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = SIGN_EXT;
-    // end
-    // 6'h0c : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h06; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = ZERO_EXT;
-    // end
-    // 6'h0d : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h07; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = ZERO_EXT;
-    // end
+    // 6'h1d ... 6'h0c ... 6'h0d ...
     6'h0f : begin
       RF_READ_reg = 1'b0; RF_WRITE_reg = 1'b1;
       RF_ADDR_W_reg = rt; RF_DATA_W_reg = LUI;
     end
-    // 6'h0a : begin ALU_OPRN_reg = `ALU_OPRN_WIDTH'h09; ALU_OP1_reg = RF_DATA_R1; ALU_OP2_reg = SIGN_EXT;
-    // end
+    // 6'h0a ...
     6'h04 : begin
       if (ZERO === 1'b1)
         PC_REG = PC_REG + SIGN_EXT;

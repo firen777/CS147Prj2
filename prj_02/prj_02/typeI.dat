@@ -9,6 +9,6 @@
 1026fffe//beq r6 r1 LBEQ;
 20e70001//LBNE: addi r7 r7 1;
 14c7fffe//bne r7 r6 LBNE;
-8c281000//lw r8 r1 0x1000;
+8c280fff//lw r8 r1 0xFFF;
 2129100d//addi r9 r9 0x100D;
 ad280000//sw r8 r9 0;

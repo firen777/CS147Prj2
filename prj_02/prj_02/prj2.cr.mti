@@ -12,7 +12,7 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 Top level modules:
 	ALU_TB
 
-} {} {}} C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v {1 {vlog -work work -stats=none C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v
+} {} {}} C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/control_unit.v {1 {vlog -work work -stats=none {C:\Users\Albert\Desktop\SJSUs3\CS147\set2\prj_02\prj_02\control_unit.v}
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
 -- Compiling module CONTROL_UNIT
 -- Compiling module PROC_SM
@@ -33,13 +33,6 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 
 Top level modules:
 	MEMORY_64MB
-
-} {} {}} C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/da_vinci_tb.v {1 {vlog -work work -stats=none C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/da_vinci_tb.v
-Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
--- Compiling module DA_VINCI_TB
-
-Top level modules:
-	DA_VINCI_TB
 
 } {} {}} C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/alu.v {1 {vlog -work work -stats=none C:/Users/Albert/Desktop/SJSUs3/CS147/set2/prj_02/prj_02/alu.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
