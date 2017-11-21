@@ -1,0 +1,14 @@
+@0001000
+2000ffff//MAIN: addi r0 r0 0xFFFF;
+7401ffff//muli r1 r0 0xFFFF;
+30220002//andi r2 r1 2;
+34430007//ori r3 r2 7;
+3c04abcd//lui r4 0xABCD;
+2885ffff//slti r5 r4 0xFFFF;
+20c60001//LBEQ: addi r6 r6 1;
+1026fffe//beq r6 r1 LBEQ;
+20e70001//LBNE: addi r7 r7 1;
+14c7fffe//bne r7 r6 LBNE;
+8c280fff//lw r8 r1 0xFFF;
+2129100d//addi r9 r9 0x100D;
+ad280000//sw r8 r9 0;
