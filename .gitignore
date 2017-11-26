@@ -9,3 +9,6 @@ IVtest/
 *.zip
 *.png
 *.PNG
+# MISC directory:
+result/
+hw2/
